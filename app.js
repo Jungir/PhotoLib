@@ -56,6 +56,8 @@ app.use(indexRoutes);
 app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/comments', commentRoutes);
 
-app.listen(5500, '127.0.0.1', function(){
-    console.log('set-up and listening...');
+const port = process.env.PORT || 3000;
+const ip = process.env.IP || "127.0.0.1";
+app.listen(port,function(){
+    console.log("Server has started .... at port "+ port+" ip: "+ip);
 });
