@@ -1,0 +1,29 @@
+body{
+    background: rgb(167, 167, 167);
+}
+
+.thumbnail img{
+    width: 100%;
+
+}
+/* .thumbnail{
+    padding: 0;
+} */
+
+.thumbnail .caption-full{
+    padding: .6rem;
+}
+
+.footer{
+    
+    width: 100%;
+    background: #393939;
+    color: #fff;
+}
+.footer p:first-child{
+    padding-top: 1.4rem; 
+}
+.delete-form{
+    display: inline;
+    
+}
