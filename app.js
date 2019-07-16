@@ -19,11 +19,13 @@ const flash = require('connect-flash');
 //flash comes before pass, cuz we need sesson configured!
 app.use(flash());
 app.use(express.static(__dirname + '/public'));
-mongoose.connect('mongodb+srv://username:username@myfirstcluster-izbvh.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true,
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true,
 useCreateIndex: true}).then(()=>{
     console.log('connected to Db');
 }).catch (err => {console.log('message', err.message);
 });
+
+console.log('take that', DATABASEURL);
 mongoose.set('useFindAndModify', false);
 app.use (bodyParser.urlencoded({extended:true}));
 
