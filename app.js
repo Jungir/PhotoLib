@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -15,8 +16,14 @@ const indexRoutes = require('./routes');
 const flash = require('connect-flash');
 //seed the db // seedDB();
 
+
+
+// 'mongodb+srv://username:username@myfirstcluster-izbvh.mongodb.net/test?retryWrites=true&w=majority'
+//lcoal host db 'mongodb://localhost:27017/yelp_camp'
 //don't have to install sesson, we have already
 //flash comes before pass, cuz we need sesson configured!
+
+
 app.use(flash());
 app.use(express.static(__dirname + '/public'));
 mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true,
@@ -25,7 +32,7 @@ useCreateIndex: true}).then(()=>{
 }).catch (err => {console.log('message', err.message);
 });
 
-console.log('take that', DATABASEURL);
+// console.log('take that', DATABASEURL);
 mongoose.set('useFindAndModify', false);
 app.use (bodyParser.urlencoded({extended:true}));
 
