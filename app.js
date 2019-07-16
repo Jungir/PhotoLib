@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -27,7 +27,7 @@ const flash = require('connect-flash');
 app.use(flash());
 app.use(express.static(__dirname + '/public'));
 
-
+const port = process.env.DATABASE_URL || 'mongodb://localhost:27017/yelp_camp';
 
 //connect to db
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true,
