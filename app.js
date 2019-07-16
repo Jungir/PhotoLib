@@ -26,7 +26,9 @@ const flash = require('connect-flash');
 
 app.use(flash());
 app.use(express.static(__dirname + '/public'));
-mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true,
+const DATABASEURL = process.env.DATABASEURL;
+//connect to db
+mongoose.connect(DATABASEURL, {useNewUrlParser: true,
 useCreateIndex: true}).then(()=>{
     console.log('connected to Db');
 }).catch (err => {console.log('message', err.message);
