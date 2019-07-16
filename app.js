@@ -27,10 +27,10 @@ const flash = require('connect-flash');
 app.use(flash());
 app.use(express.static(__dirname + '/public'));
 
-const port = process.env.DATABASE_URL || 'mongodb://localhost:27017/yelp_camp';
+let DATABASE_URL = process.env.DATABASE_URL || 'mongodb://localhost:27017/yelp_camp';
 
 //connect to db
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true,
+mongoose.connect(DATABASE_URL, {useNewUrlParser: true,
 useCreateIndex: true}).then(()=>{
     console.log('connected to Db');
 }).catch (err => {console.log('message', err.message);
