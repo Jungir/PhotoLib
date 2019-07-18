@@ -3,17 +3,17 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Comment = require("./models/comment");
-const Campground = require('./models/campground');
+const Photo = require('./models/photo');
 const passport = require('passport');
 const localStrategy = require('passport-local');
 const User = require('./models/user');
-const seedDB = require('./seeds');
+
 const methodOverrride = require('method-override');
 const commentRoutes = require('./routes/comments');
-const campgroundRoutes = require('./routes/campgrounds');
+const photoRoutes = require('./routes/photos');
 const indexRoutes = require('./routes');
 const flash = require('connect-flash');
-//seed the db // seedDB();
+
 
 
 
@@ -26,7 +26,7 @@ const flash = require('connect-flash');
 app.use(flash());
 app.use(express.static(__dirname + '/public'));
 
-let DATABASE_URL = process.env.DATABASE_URL || 'mongodb://localhost:27017/yelp_camp';
+let DATABASE_URL = process.env.DATABASE_URL || 'mongodb://localhost:27017/photo_lib';
 
 //connect to db
 mongoose.connect(DATABASE_URL, {useNewUrlParser: true,
@@ -69,8 +69,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(indexRoutes);
-//changed campSS to photos
-app.use('/photos', campgroundRoutes);
+
+app.use('/photos', photoRoutes);
 app.use('/photos/:id/comments', commentRoutes);
 
 const port = process.env.PORT || 3000;

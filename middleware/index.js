@@ -1,22 +1,22 @@
-const Campground = require('../models/campground');
+const Photo = require('../models/photo');
 const Comment = require('../models/comment');
 
 //middleware
 let middlewareObj = {};
 
-middlewareObj.checkCampgroundOwenership = function (req, res, next) {
+middlewareObj.checkPhotoOwenership = function (req, res, next) {
     //is user logged in at all
     if(req.isAuthenticated()){
-        //does user own campground
-        Campground.findById(req.params.id, function(err, foundCampground){
+        //does user own photo
+        Photo.findById(req.params.id, function(err, foundPhoto){
             if(err){
-                req.flash('error', 'Campground not found')
-                res.redirect('/campgrounds');
+                req.flash('error', 'Photo not found')
+                res.redirect('/photos');
             }else{
-                //foundCamp.author.id is a mongoose object 
+                //foundPhoto.author.id is a mongoose object 
                 //req.user._id is a string 
                 // can't compare them, unless you use mongoose equals function
-                if(foundCampground.author.id.equals(req.user._id)){
+                if(foundPhoto.author.id.equals(req.user._id)){
                     //next fun is the only thing that allows to go further
                     return next();
                 }else{
@@ -34,13 +34,13 @@ middlewareObj.checkCampgroundOwenership = function (req, res, next) {
 middlewareObj.checkCommentOwenership = function (req, res, next) {
     //is user logged in at all
     if(req.isAuthenticated()){
-        //does user own campground
+        //does user own photo
         Comment.findById(req.params.comment_id, function(err, foundComment){
             if(err){
                 console.log(err);
-                res.redirect('/campgrounds');
+                res.redirect('/photos');
             }else{
-                //foundCamp.author.id is a mongoose object 
+                //foundPhoto.author.id is a mongoose object 
                 //req.user._id is a string 
                 // can't compare them, unless you use mongoose equals function
                 if(foundComment.author.id.equals(req.user._id)){
