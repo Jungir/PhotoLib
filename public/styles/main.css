@@ -27,3 +27,22 @@ body{
     display: inline;
     
 }
+
+.register input{
+    max-width: 40%;
+    margin: 0 auto;
+}
+
+.well > div{
+    border-bottom: 1px #999999 solid;
+}
+.well > div:first-of-type{
+    border-bottom: none;
+}
+.well > div:last-of-type{
+    border-bottom: none;
+}
+
+.p-tag{
+    opacity: 0;
+}

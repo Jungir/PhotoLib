@@ -69,8 +69,9 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(indexRoutes);
-app.use('/campgrounds', campgroundRoutes);
-app.use('/campgrounds/:id/comments', commentRoutes);
+//changed campSS to photos
+app.use('/photos', campgroundRoutes);
+app.use('/photos/:id/comments', commentRoutes);
 
 const port = process.env.PORT || 3000;
 const ip = process.env.IP || "127.0.0.1";

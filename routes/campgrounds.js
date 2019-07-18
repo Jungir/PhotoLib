@@ -45,7 +45,7 @@ router.post("/", middleware.isLoogedIn, function(req, res){
         } else {
             //redirect back to campgrounds page
             // console.log(newlyCreated);
-            res.redirect("/campgrounds");
+            res.redirect("/photos");
         }
     });
 });
@@ -86,9 +86,9 @@ router.put('/:id', middleware.checkCampgroundOwenership,function (req,res) {
     // } but we have the easy way name="campground(obj.groupping)[name]"
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function (err, updatedCampground) {
         if(err){
-            res.redirect("/campground");
+            res.redirect("/photo");
         }else {
-            res.redirect('/campgrounds/'+req.params.id);
+            res.redirect('/photos/'+req.params.id);
         }
     })
     

@@ -1,8 +1,13 @@
 <% include partials/header %>
-<h1>Login</h1>
-<form action="/login" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button>login</button>
-</form>
+<div class="container text-center">
+    <h1>Login</h1>
+    <form class="register form-group my-2" action="/login" method="POST">
+        <input class="form-control" type="text" name="username" placeholder="username" required>
+        <br>
+        <input class="form-control" type="password" name="password" placeholder="password" required>
+        <br>
+        <button class="btn btn-info text-dark ">Login</button>
+    </form>
+</div>
 <% include partials/footer %>
+
